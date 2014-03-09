@@ -30,7 +30,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 
@@ -56,7 +55,8 @@ public class jumperX extends Cocos2dxActivity{
     public static final String InterstitialPPID = "16TLmTcoApfFONUfTQHb7r6k";
     private static  Handler mHandler;   
     public static RelativeLayout mAdContainer;
-	DomobAdView mAdview320x50;
+	public static DomobAdView mAdview;
+	public static Boolean domobAdReady, adHided;
 	
     /**
      * 友盟Social SDK实例，整个SDK的Controller
@@ -72,35 +72,35 @@ public class jumperX extends Cocos2dxActivity{
 	    
 	    STATIC_REF = this;
 	    mActivity = this;
+	    domobAdReady = false;
+	    
 	    
 	    mController = UMServiceFactory.getUMSocialService(
                 "com.umeng.share", RequestType.SOCIAL);
 	    
 	    mHandler = new Handler();
-	    
-	    mAdview320x50 = new DomobAdView(this, PUBLISHER_ID, InlinePPID, DomobAdView.INLINE_SIZE_320X50);
-		mAdview320x50.setKeyword("game");
 		
 	    mAdContainer = new RelativeLayout(this);
         RelativeLayout.LayoutParams mAdContainerParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.FILL_PARENT,
-                RelativeLayout.LayoutParams.FILL_PARENT);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.FILL_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP,
-                RelativeLayout.TRUE);
-        mAdContainer.addView(mAdview320x50, layoutParams);
-                
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT);
         this.addContentView(mAdContainer, mAdContainerParams);
-//	    setContentView(R.layout.main);
-		
+        
+        mAdview = new DomobAdView(this, PUBLISHER_ID, InlinePPID, DomobAdView.INLINE_SIZE_320X50);
+		mAdview.setKeyword("game");
+        RelativeLayout.LayoutParams layout=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+		layout.addRule(RelativeLayout.CENTER_HORIZONTAL);		
+        mAdContainer.addView(mAdview, layout);
 
-		mAdview320x50.setAdEventListener(new DomobAdEventListener() {
+		mAdview.setAdEventListener(new DomobAdEventListener() {
 						
 			@Override
 			public void onDomobAdReturned(DomobAdView adView) {
-				Log.i("DomobSDKDemo", "onDomobAdReturned");				
+//				Log.i("DomobSDKDemo", "onDomobAdReturned");	
+				if (adHided) {
+					mHandler.post(hideMyAdi);
+				}
+				domobAdReady = true;
 			}
 
 			@Override
@@ -120,7 +120,7 @@ public class jumperX extends Cocos2dxActivity{
 
 			@Override
 			public void onDomobAdFailed(DomobAdView arg0, ErrorCode arg1) {
-				Log.i("DomobSDKDemo", "onDomobAdFailed");				
+//				Log.i("DomobSDKDemo", "onDomobAdFailed");
 			}
 
 			@Override
@@ -133,23 +133,29 @@ public class jumperX extends Cocos2dxActivity{
 				return jumperX.this;
 			}
 		});
-		RelativeLayout.LayoutParams layout=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		layout.addRule(RelativeLayout.CENTER_HORIZONTAL);
-		mAdview320x50.setLayoutParams(layout);
+        mAdview.requestRefreshAd();
 		
 	}
 	
 	private static Runnable showMyAdi = new Runnable() {    
 	    public void run() { 
-	    	if (jumperX.mAdContainer != null)
-	    		jumperX.mAdContainer.setVisibility(View.VISIBLE);
+	    	adHided = false;
+	    	if (mAdview != null) {
+	    		mAdContainer.scrollTo(0, 0);
+	    	}
 	    }    
 	};
 	
 	private static Runnable hideMyAdi = new Runnable() {
 		public void run() {
-			if (jumperX.mAdContainer != null)
-				jumperX.mAdContainer.setVisibility(View.INVISIBLE);
+			adHided = true;
+			if (mAdContainer != null) {
+				mAdContainer.scrollTo(0, mAdview.getHeight());
+			}
+			if (domobAdReady) {
+				domobAdReady = false;
+				mAdview.requestRefreshAd();
+			}
 		}
 	};
 	

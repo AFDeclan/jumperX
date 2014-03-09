@@ -27,6 +27,7 @@
 		14262AD618C8ABDB0073B3CB /* HelpLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14262AD418C8ABDB0073B3CB /* HelpLayer.cpp */; };
 		14262AD818C8AD030073B3CB /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 14262AD718C8AD030073B3CB /* help.png */; };
 		1439475F18C8C85C0064C7BF /* walk.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1439475E18C8C85C0064C7BF /* walk.m4a */; };
+		143CADA318CB6C760035B9EC /* powerFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 143CADA218CB6C760035B9EC /* powerFrame.png */; };
 		144CA5F318C4BB5B0065798C /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 144CA5F118C4BB5B0065798C /* MenuLayer.cpp */; };
 		144CA5F518C4CCB40065798C /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 144CA5F418C4CCB40065798C /* check.png */; };
 		146B2BC418C96A5B0004064D /* SocialControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 146B2BC218C96A5B0004064D /* SocialControl.cpp */; };
@@ -392,6 +393,7 @@
 		14262AD518C8ABDB0073B3CB /* HelpLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpLayer.h; path = ../Classes/HelpLayer.h; sourceTree = "<group>"; };
 		14262AD718C8AD030073B3CB /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		1439475E18C8C85C0064C7BF /* walk.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk.m4a; sourceTree = "<group>"; };
+		143CADA218CB6C760035B9EC /* powerFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerFrame.png; sourceTree = "<group>"; };
 		144CA5F118C4BB5B0065798C /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuLayer.cpp; path = ../Classes/MenuLayer.cpp; sourceTree = "<group>"; };
 		144CA5F218C4BB5B0065798C /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuLayer.h; path = ../Classes/MenuLayer.h; sourceTree = "<group>"; };
 		144CA5F418C4CCB40065798C /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
@@ -1199,6 +1201,7 @@
 		14DDE5AE18C374B9002E5F2F /* power */ = {
 			isa = PBXGroup;
 			children = (
+				143CADA218CB6C760035B9EC /* powerFrame.png */,
 				14DDE5AF18C374B9002E5F2F /* dot1.png */,
 				14DDE5B018C374B9002E5F2F /* dot2.png */,
 				14DDE5B118C374B9002E5F2F /* dot3.png */,
@@ -1716,6 +1719,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
+				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				14E2192418C370B70031C0F3 /* GameScene.cpp */,
 				14E2192518C370B70031C0F3 /* GameScene.h */,
 				14E2192218C370B70031C0F3 /* GameOverLayer.cpp */,
@@ -1746,8 +1751,6 @@
 				14E2193318C370B70031C0F3 /* SkyLayerNear.h */,
 				14E2191A18C370B70031C0F3 /* AudioEffect.cpp */,
 				14E2191B18C370B70031C0F3 /* AudioEffect.h */,
-				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
-				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				14BC362C18C59A690061F813 /* AdControl.cpp */,
 				14BC362A18C595060061F813 /* AdControl.h */,
 				146B2BC218C96A5B0004064D /* SocialControl.cpp */,
@@ -2379,6 +2382,7 @@
 				141D245018C96802008723DD /* UMSShareListController.xib in Resources */,
 				14DDE5CF18C374B9002E5F2F /* block2_4.png in Resources */,
 				14262ACE18C894100073B3CB /* jump1.mp3 in Resources */,
+				143CADA318CB6C760035B9EC /* powerFrame.png in Resources */,
 				14262AD818C8AD030073B3CB /* help.png in Resources */,
 				141D244F18C96802008723DD /* UMSnsAccountViewController.xib in Resources */,
 				14FDA3B318C6F24800A64246 /* 3.png in Resources */,

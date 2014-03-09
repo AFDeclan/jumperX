@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "GlobalDefine.h"
+#include "Floor.h"
 
 class FloorGenerator {
     
@@ -18,7 +19,7 @@ public:
     static cocos2d::CCArray * floors;
     static float lastHeight;
     static float nextHeight;
-    static cocos2d::CCSprite * nextFloor(float baseHeight);
+    static Floor * nextFloor(float baseHeight);
     static void reset();
     
 };

@@ -48,26 +48,28 @@ bool GameScene::init()
     Floor *baseFloor = (Floor *)FloorGenerator::floors->objectAtIndex(0);
     _jumpLayer->addChild(_jumper);
     _jumper->walk(baseFloor);
-    _powerLine = CCLayerColor::create(ccc4(255, 0, 0, 200), kScreenWidth, 20);
-    _powerLine->setAnchorPoint(ccp(0, 1));
-    _powerLine->setPosition(ccp(0, kScreenHeight-20));
-    this->addChild(_powerLine);
+    
+//    _powerLine = CCLayerColor::create(ccc4(255, 0, 0, 200), kScreenWidth, 20);
+//    _powerLine->setAnchorPoint(ccp(0, 1));
+//    _powerLine->setPosition(ccp(0, kScreenHeight-20));
+//    this->addChild(_powerLine);
+
     _label = CCLabelAtlas::create("0", RES_FontNum, 32, 38, 46);
     _label->setScale(kScaleFactorX*0.6);
     _label->setAnchorPoint(ccp(0.5, 1));
-    _label->setPosition(ccp(kScreenWidth/2, kScreenHeight - 16));
+    _label->setPosition(ccp(kScreenWidth/2, kScreenHeight - 22));
     this->addChild(_label);
     
     CCControlButton *menuButton = CCControlButton::create("[ Menu ]", "Verdana-Bold", 16.0f*kScaleFactorX);
     menuButton->setAnchorPoint(ccp(1, 1));
-    menuButton->setPosition(ccp(kScreenWidth-12, kScreenHeight-16));
+    menuButton->setPosition(ccp(kScreenWidth-12, kScreenHeight-22));
     menuButton->addTargetWithActionForControlEvents(this, cccontrol_selector(GameScene::showMenu), CCControlEventTouchDown);
     this->addChild(menuButton);
 
     
     CCControlButton *helpButton = CCControlButton::create("[ Help ]", "Verdana-Bold", 16.0f*kScaleFactorX);
     helpButton->setAnchorPoint(ccp(0, 1));
-    helpButton->setPosition(ccp(12, kScreenHeight-16));
+    helpButton->setPosition(ccp(12, kScreenHeight-22));
     helpButton->addTargetWithActionForControlEvents(this, cccontrol_selector(GameScene::showHelp), CCControlEventTouchDown);
     this->addChild(helpButton);
     
@@ -79,7 +81,7 @@ bool GameScene::init()
     _label->setZOrder(3);
     menuButton->setZOrder(3);
     helpButton->setZOrder(3);
-    _powerLine->setZOrder(4);
+//    _powerLine->setZOrder(4);
     _jumper->setZOrder(9);
     
     GameControl::startGame();
@@ -140,6 +142,9 @@ void GameScene::update(float delta)
             if (floorPos.x <= jumperPos.x+_jumper->globalWidth() &&
                 floorPos.x+floor->globalWidth() >= jumperPos.x) {
                 _jumper->walk(floor);
+                if (_jumpLayer->touching) {
+                    _jumper->startPower();
+                }
             }
         }
     }
@@ -175,7 +180,7 @@ void GameScene::update(float delta)
     }
     
     //powerLine
-    _powerLine->setScaleX(_jumper->getPower());
+//    _powerLine->setScaleX(_jumper->getPower());
     
     //Whether Game Over
     if (!walkingFloor && jumperPos.y < - _jumper->globalHeight()) {

@@ -109,9 +109,26 @@ static RootViewController * instance;
                                                      size:DOMOB_AD_SIZE_320x50];
         setViewLeftDown(_dmAdView, 0, 0);
         _dmAdView.rootViewController = self;
+        _dmAdView.delegate = self;
         [self.view addSubview:_dmAdView];
         [_dmAdView loadAd];
     }
+}
+
+- (void)setView:(UIView *)view
+{
+    [view addSubview:_dmAdView];
+    [super setView:view];
+}
+
+- (void)dmAdViewFailToLoadAd:(DMAdView *)adView withError:(NSError *)error
+{
+    NSLog(@"AdView Fail:%@", error);
+}
+
+- (void)dmAdViewSuccessToLoadAd:(DMAdView *)adView
+{
+//    NSLog(@"AdView Suc!");
 }
 
 - (void)showSocial:(NSString *)text

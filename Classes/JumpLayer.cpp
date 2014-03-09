@@ -28,6 +28,7 @@ bool JumpLayer::init()
     if (!ScrollLayer::init()) return false;
     setTouchEnabled(true);
     setKeypadEnabled(true);
+    touching = false;
     return true;
 }
 
@@ -35,8 +36,12 @@ CCLayerColor * JumpLayer::unitLayer(float baseHeight)
 {
     CCLayerColor *layer = CCLayerColor::create(ccc4(1,1,1,0), kDesignWidth, kDesignHeight);
     layer->setAnchorPoint(ccp(0, 0));
+    int zorder = 20;
     while (FloorGenerator::nextHeight < baseHeight + kDesignHeight) {
-        layer->addChild(FloorGenerator::nextFloor(baseHeight));
+        Floor *next = FloorGenerator::nextFloor(baseHeight);
+        next->setZOrder(zorder--);
+        layer->addChild(next);
+        
     }
     return layer;
 }
@@ -44,8 +49,8 @@ CCLayerColor * JumpLayer::unitLayer(float baseHeight)
 void JumpLayer::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent)
 {
     Jumper *jumper = Jumper::theJumper();
+    touching = true;
     if (jumper->getWalkingFloor()) {
-//        [AudioEffect playPoweringEffect];
         jumper->startPower();
     }
 }
@@ -53,6 +58,7 @@ void JumpLayer::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEven
 void JumpLayer::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent)
 {
     Jumper *jumper = Jumper::theJumper();
+    touching = false;
     if (jumper->jump()) {
         //hint
         this->hint();

@@ -2,7 +2,7 @@
 #import "DomobAdSDK/DMAdView.h"
 
 
-@interface RootViewController : UIViewController {
+@interface RootViewController : UIViewController <DMAdViewDelegate> {
     DMAdView * _dmAdView;
 }
 

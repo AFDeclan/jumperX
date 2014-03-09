@@ -28,6 +28,8 @@ public:
     CREATE_FUNC(JumpLayer);
     void keyBackClicked();
     void keyMenuClicked();
+    
+    bool touching;
 };
 
 

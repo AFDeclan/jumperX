@@ -207,6 +207,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/JumpLayer.o: \
  jni/../../Classes/MyLayer.h jni/../../Define/GlobalDefine.h \
  jni/../../Define/GameDefine.h jni/../../Define/Umeng.h \
  jni/../../Define/Resources.h jni/../../Classes/FloorGenerator.h \
+ jni/../../Classes/Floor.h jni/../../Classes/MySprite.h \
  jni/../../Classes/Jumper.h \
  /Users/declan/Documents/Android/cocos2d-x-2.2.2/projects/jumperX/proj.android/../../../extensions/cocos-ext.h \
  /Users/declan/Documents/Android/cocos2d-x-2.2.2/projects/jumperX/proj.android/../../../extensions/ExtensionMacros.h \
@@ -442,7 +443,6 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/JumpLayer.o: \
  /Users/declan/Documents/Android/cocos2d-x-2.2.2/projects/jumperX/proj.android/../../../extensions/spine/SkeletonJson.h \
  /Users/declan/Documents/Android/cocos2d-x-2.2.2/projects/jumperX/proj.android/../../../extensions/spine/CCSkeleton.h \
  /Users/declan/Documents/Android/cocos2d-x-2.2.2/projects/jumperX/proj.android/../../../extensions/spine/CCSkeletonAnimation.h \
- jni/../../Classes/Floor.h jni/../../Classes/MySprite.h \
  jni/../../Classes/GameScene.h jni/../../Classes/SkyLayerFar.h \
  jni/../../Classes/SkyLayerNear.h
 
@@ -867,6 +867,10 @@ jni/../../Define/Umeng.h:
 jni/../../Define/Resources.h:
 
 jni/../../Classes/FloorGenerator.h:
+
+jni/../../Classes/Floor.h:
+
+jni/../../Classes/MySprite.h:
 
 jni/../../Classes/Jumper.h:
 
@@ -1337,10 +1341,6 @@ jni/../../Classes/Jumper.h:
 /Users/declan/Documents/Android/cocos2d-x-2.2.2/projects/jumperX/proj.android/../../../extensions/spine/CCSkeleton.h:
 
 /Users/declan/Documents/Android/cocos2d-x-2.2.2/projects/jumperX/proj.android/../../../extensions/spine/CCSkeletonAnimation.h:
-
-jni/../../Classes/Floor.h:
-
-jni/../../Classes/MySprite.h:
 
 jni/../../Classes/GameScene.h:
 

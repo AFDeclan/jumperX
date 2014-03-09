@@ -37,9 +37,9 @@ void FloorGenerator::reset()
     floors->retain();
 }
 
-CCSprite * FloorGenerator::nextFloor(float baseHeight)
+Floor * FloorGenerator::nextFloor(float baseHeight)
 {
-    CCSprite *next;
+    Floor *next;
     if (nextHeight == 0) {
         next = Floor::firstFloor();
     } else {
@@ -61,7 +61,7 @@ CCSprite * FloorGenerator::nextFloor(float baseHeight)
         if (rand() % 8 == 0) {
             //move
             float tx = (float)rand() / RAND_MAX * kDesignWidth - contentWidth(next)/2;
-            float speed = (float)rand() / RAND_MAX * 50 + 20;
+            float speed = (float)rand() / RAND_MAX * 30 + 20;
             float dur = ABS(tx-x)/speed;
             CCMoveTo *moveTo = CCMoveTo::create(dur, ccp(tx, y));
             CCMoveTo *moveBack = CCMoveTo::create(dur, ccp(x, y));

@@ -28,6 +28,7 @@
 #define RES_WalkAniPrefix	"pm/"
 #define RES_Jump            "pm/jump.png"
 #define RES_Fart            "pm/fart.png"
+#define RES_PowerFrame      "power/powerFrame.png"
 
 #define RES_MenuCheck       "menu/check.png"
 #define RES_MenuBlock		"menu/bgBlock.png"
@@ -52,6 +53,7 @@
 #define RES_WalkAniPrefix	""
 #define RES_Jump            "jump.png"
 #define RES_Fart            "fart.png"
+#define RES_PowerFrame      "powerFrame.png"
 
 #define RES_MenuCheck       "check.png"
 #define RES_MenuBlock		"bgBlock.png"

@@ -16,6 +16,7 @@ USING_NS_CC;
 #define Tag_WalkAction  1
 #define Tag_PowerAction 2
 #define Tag_FartAction  3
+#define Tag_RotateAction 4
 
 static Jumper * instance;
 
@@ -78,10 +79,21 @@ void Jumper::myInit()
     _fartSprite = CCSprite::create(RES_Fart);
     this->addChild(_fartSprite);
     _fartSprite->setScale(0);
-    _fartSprite->setZOrder(1);
+    _fartSprite->setZOrder(this->getZOrder()+1);
     _fartSprite->setAnchorPoint(ccp(0.5, 1));
     _fartSprite->setPosition(ccp(contentWidth(this)/2, 0));
     
+    _powerFrameSprite = CCSprite::create(RES_PowerFrame);
+    this->addChild(_powerFrameSprite);
+    _powerFrameSprite->setZOrder(9);
+    _powerFrameSprite->setVisible(false);
+    _powerFrameSprite->setPosition(ccp(contentWidth(this)/2, contentHeight(_powerSprite)));
+    _powerLine = CCLayerColor::create(ccc4(228, 98, 96, 200), contentWidth(_powerFrameSprite), contentHeight(_powerFrameSprite));
+    _powerLine->setAnchorPoint(ccp(0, 0));
+    _powerLine->setPosition(ccp(0, 0));
+    _powerFrameSprite->addChild(_powerLine);
+    _powerLine->setZOrder(8);
+    _powerLine->setScaleX(0);
     delete [] fileName;
 }
 
@@ -132,7 +144,10 @@ void Jumper::update(float delta)
             _power -= 1;
             _needHint = false;
         }
-    }
+        //powerLine
+        _powerFrameSprite->setVisible(true);
+        _powerLine->setScaleX(_power);
+    } else _powerFrameSprite->setVisible(false);
     if (_walkingFloor) {
         if (posY(this) < contentHeight(_walkingFloor)) {
             posSetY(this, contentHeight(_walkingFloor));
@@ -163,14 +178,14 @@ void Jumper::setLeftWalking(bool left)
     _leftWalking = left;
     this->setFlipX(!_leftWalking);
     _vx = _leftWalking? -ABS(_vx) : ABS(_vx);
-    this->stopActionByTag(101);
+    this->stopActionByTag(Tag_RotateAction);
     float angle = _leftWalking? -8 : 8;
     CCRotateTo *rotate = CCRotateTo::create(0.2, angle);
-    rotate->setTag(101);
+    rotate->setTag(Tag_RotateAction);
     CCRotateTo *rotate2 = CCRotateTo::create(0.2, 0);
     CCRepeatForever *repeat = CCRepeatForever::create(CCSequence::create(rotate, rotate2, NULL));
-    repeat->setTag(101);
-    if (!_walkingFloor) {
+    repeat->setTag(Tag_RotateAction);
+    if (!_walkingFloor || _powering) {
         this->runAction(rotate);
     } else {
         this->runAction(repeat);
@@ -236,6 +251,7 @@ void Jumper::showPowering()
 {
     _powerSprite->setVisible(true);
     _powerSprite->runAction(_powerAction);
+    this->stopActionByTag(Tag_RotateAction);
 }
 
 void Jumper::showNotPowering()

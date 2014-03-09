@@ -20,7 +20,8 @@ class Jumper : public MySprite {
 
 private:
     CCAction *_walkAction, *_powerAction;
-    CCSprite *_powerSprite, *_fartSprite;
+    CCSprite *_powerSprite, *_fartSprite, *_powerFrameSprite;
+    CCLayerColor *_powerLine;
     Floor *_walkingFloor;
     bool _needHint, _jumping, _leftWalking, _powering;
     float _vx, _vy, _ax, _ay, _power;

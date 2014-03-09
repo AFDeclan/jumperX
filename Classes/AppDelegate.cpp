@@ -7,6 +7,8 @@
 
 USING_NS_CC;
 
+static bool needAutoResume = false;
+
 AppDelegate::AppDelegate() {
 }
 
@@ -16,6 +18,8 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+    
+    MobClickCpp::startWithAppkey(kUmeng_AppKey, kUmeng_AppChannel_91);
     
     if (!LoadBooleanFromUD(kUDK_Setting_Initialed)) {
         SaveBooleanToUD(kUDK_Setting_Initialed, true);
@@ -40,8 +44,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // run
     pDirector->runWithScene(pScene);
-    
-    MobClickCpp::startWithAppkey(kUmeng_AppKey, kUmeng_AppChannel_Wandoujia);
 
     return true;
 }
@@ -51,7 +53,13 @@ void AppDelegate::applicationDidEnterBackground() {
     CCDirector::sharedDirector()->stopAnimation();
     
     MobClickCpp::applicationDidEnterBackground();
-    GameControl::pauseGame();
+    if (GameControl::getGameStatus() == On){
+        GameControl::pauseGame();
+        needAutoResume = true;
+    } else {
+        needAutoResume = false;
+    }
+
 }
 
 // this function will be called when the app is active again
@@ -59,5 +67,5 @@ void AppDelegate::applicationWillEnterForeground() {
     CCDirector::sharedDirector()->startAnimation();
     
     MobClickCpp::applicationWillEnterForeground();
-    GameControl::resumeGame();
+    if (needAutoResume) GameControl::resumeGame();
 }

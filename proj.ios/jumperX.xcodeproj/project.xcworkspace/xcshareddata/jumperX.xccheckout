@@ -5,39 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3B4C0215-B884-40B5-91B3-E7A023A6C4B9</string>
+	<string>B66295FA-53B2-46A7-8037-B7F07554C225</string>
 	<key>IDESourceControlProjectName</key>
 	<string>jumperX</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>1DAE397E-7579-4FAA-9C4F-04A41959AB85</key>
-		<string>svn://bjjxren.com/jumperX</string>
+		<key>2A8C425E-BB72-4C8A-AA75-D26C2ADA98E6</key>
+		<string>https://github.com/AFDeclan/jumperX.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>proj.ios/jumperX.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1DAE397E-7579-4FAA-9C4F-04A41959AB85</key>
+		<key>2A8C425E-BB72-4C8A-AA75-D26C2ADA98E6</key>
 		<string>../../..</string>
 	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>1DAE397E-7579-4FAA-9C4F-04A41959AB85</key>
-		<string>svn://bjjxren.com/jumperX</string>
-	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>svn://bjjxren.com/jumperX/proj.ios/jumperX.xcodeproj</string>
+	<string>https://github.com/AFDeclan/jumperX.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1DAE397E-7579-4FAA-9C4F-04A41959AB85</string>
+	<string>2A8C425E-BB72-4C8A-AA75-D26C2ADA98E6</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>1DAE397E-7579-4FAA-9C4F-04A41959AB85</string>
+			<string>2A8C425E-BB72-4C8A-AA75-D26C2ADA98E6</string>
 			<key>IDESourceControlWCCName</key>
 			<string>jumperX</string>
 		</dict>
