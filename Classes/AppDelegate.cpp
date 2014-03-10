@@ -19,7 +19,7 @@ AppDelegate::~AppDelegate()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     
-    MobClickCpp::startWithAppkey(kUmeng_AppKey, kUmeng_AppChannel_91);
+    MobClickCpp::startWithAppkey(kUmeng_AppKey, kUmeng_AppChannel);
     
     if (!LoadBooleanFromUD(kUDK_Setting_Initialed)) {
         SaveBooleanToUD(kUDK_Setting_Initialed, true);
